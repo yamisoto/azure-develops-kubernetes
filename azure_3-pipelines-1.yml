@@ -1,0 +1,28 @@
+
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo CGTLX...NEARLY THERE!!!!!!!!
+  displayName: 'Run a one-line script'
+- task: DownloadSecureFile@1
+  name : publickey
+  inputs:
+    secureFile: 'azure_rsa.pub'
+
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    backendType: 'azurerm'
+    backendServiceArm: 'AZURE_28'
+    ensureBackend: true
+    backendAzureRmResourceGroupLocation: 'westeurope'
+    backendAzureRmStorageAccountName: 'cgtlxyamikiitaneni'
+    backendAzureRmContainerName: 'cgtlxyamikiitanenixy'
+    backendAzureRmKey: 'kbs-dev-cgtlx.tfstate'
+    allowTelemetryCollection: true
