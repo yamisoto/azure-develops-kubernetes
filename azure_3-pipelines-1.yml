@@ -13,16 +13,14 @@ steps:
   name : publickey
   inputs:
     secureFile: 'azure_rsa.pub'
-
 - task: TerraformCLI@0
   inputs:
     command: 'init'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     backendType: 'azurerm'
     backendServiceArm: 'AZURE_28'
-    ensureBackend: true
-    backendAzureRmResourceGroupLocation: 'westeurope'
-    backendAzureRmStorageAccountName: 'cgtlxyamikiitaneni'
-    backendAzureRmContainerName: 'cgtlxyamikiitanenixy'
-    backendAzureRmKey: 'kbs-dev-cgtlx.tfstate'
+    backendAzureRmResourceGroupName: 'cgtlc-cgtlx-rg'
+    backendAzureRmStorageAccountName: 'cgtlxcgtlxcgtlx'
+    backendAzureRmContainerName: 'cgtlxcgtlxcg'
+    backendAzureRmKey: 'kubernetes-dev-cgtlx.tfstate'
     allowTelemetryCollection: true
