@@ -16,7 +16,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/azure-develops-kubernetes'
+    workingDirectory: '$(System.DefaultWorkingDirectory)'
     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     backendServiceArm: 'AZURE_28'
     backendAzureRmResourceGroupName: 'kubernetes'
