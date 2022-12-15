@@ -22,4 +22,9 @@ steps:
     backendAzureRmStorageAccountName: 'cgtlx2909cgtlx'
     backendAzureRmContainerName: 'cgtlx2909cgtlxcont'
     backendAzureRmKey: 'kubernetes-cgtlx-dev.tfstste'
+- task: TerraformCLI@0
+  inputs:
+    command: 'apply'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    allowTelemetryCollection: true
 
