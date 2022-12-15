@@ -1,0 +1,29 @@
+
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+- task: DownloadSecureFile@1
+  name:publickey
+  inputs:
+  secureFile: 'azure_rsa.pub'
+- task: TerraformTaskV3@3
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    commandOptions: '''-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'''
+    backendServiceArm: 'AZURE_28'
+    backendAzureRmResourceGroupName: 'kubernetes'
+    backendAzureRmStorageAccountName: 'cgtlx2909cgtlx'
+    backendAzureRmContainerName: 'cgtlx2909cgtlxss'
+    backendAzureRmKey: 'kubernetes-dev-cgtlx.tfstate'
+  
+
+  
+ 
