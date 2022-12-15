@@ -12,17 +12,15 @@ steps:
   name: publickey
   inputs:
     secureFile: 'azure_rsa.pub'
-
-- task: TerraformCLI@0
+- task: TerraformTaskV3@3
   inputs:
-   command: 'init'
-   workingDirectory: '$(System.DefaultWorkingDirectory)/azure-develops-kubernetes'
-   commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
-   backendType: 'azurerm'
-   backendServiceArm: 'azure-resource-manager-service-connection'
-   ensureBackend: true
-   backendAzureRmResourceGroupName: 'kubernetes'
-   backendAzureRmResourceGroupLocation: 'westeurope'
-   backendAzureRmStorageAccountName: 'cgtlx2909cgtlx'
-   backendAzureRmContainerName: 'cgtlx2909cgtlxcontan'
-   backendAzureRmKey: 'kubernetes-dev.tfstate'
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/azure-develops-kubernetes'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    backendServiceArm: 'AZURE_28'
+    backendAzureRmResourceGroupName: 'kubernetes'
+    backendAzureRmStorageAccountName: 'cgtlx2909cgtlx'
+    backendAzureRmContainerName: 'cgtlx2909cgtlxcont'
+    backendAzureRmKey: 'kubernetes-cgtlx-dev.tfstste'
+
