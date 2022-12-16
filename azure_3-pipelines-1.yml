@@ -19,17 +19,18 @@ steps:
   inputs:
     command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
-    # commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     backendType: 'azurerm'
     backendServiceArm: 'AZURE_28'
     ensureBackend: true
     backendAzureRmResourceGroupName: 'cgtlx-backend-rg'
     backendAzureRmResourceGroupLocation: 'westeurope'
-    backendAzureRmStorageAccountName: 'storageaccmomogh'
-    backendAzureRmContainerName: 'storageacctrangkkkknju'
+    backendAzureRmStorageAccountName: 'storageaccgfgfgf'
+    backendAzureRmContainerName: 'storageacctrangefrtghy'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
 - task: TerraformCLI@0
   inputs:
-    command: 'destroy'
+    command: 'apply'
     environmentServiceName: 'AZURE_28'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     allowTelemetryCollection: true
