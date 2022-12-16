@@ -1,26 +1,30 @@
 
 
+
 trigger:
-- main
+- master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo CGTLX...NEARLY THERE!!!!!!!!
+- script: echo K8S Terraform Azure!
   displayName: 'Run a one-line script'
 - task: DownloadSecureFile@1
-  name : publickey
+  name: publickey
   inputs:
     secureFile: 'azure_rsa.pub'
+
 - task: TerraformCLI@0
   inputs:
     command: 'init'
-    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    # commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     backendType: 'azurerm'
     backendServiceArm: 'AZURE_28'
-    backendAzureRmResourceGroupName: 'kiitan-rg'
-    backendAzureRmStorageAccountName: 'cgtlxcgtlxcgtlx'
-    backendAzureRmContainerName: 'cgtlxcgtlxcg'
-    backendAzureRmKey: 'kubernetes-dev-cgtlx.tfstate'
-    allowTelemetryCollection: true
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'terraform-backend-rg'
+    backendAzureRmResourceGroupLocation: 'westeurope'
+    backendAzureRmStorageAccountName: 'storageaccmomom'
+    backendAzureRmContainerName: 'storageacctrangkkkkll'
+    backendAzureRmKey: 'kubernetes-dev.tfstate'
