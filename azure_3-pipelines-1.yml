@@ -23,8 +23,8 @@ steps:
     backendType: 'azurerm'
     backendServiceArm: 'AZURE_28'
     ensureBackend: true
-    backendAzureRmResourceGroupName: 'terraform-backend-rg'
+    backendAzureRmResourceGroupName: 'cgtlx-backend-rg'
     backendAzureRmResourceGroupLocation: 'westeurope'
-    backendAzureRmStorageAccountName: 'storageaccmomom'
-    backendAzureRmContainerName: 'storageacctrangkkkkll'
+    backendAzureRmStorageAccountName: 'storageaccmomogh'
+    backendAzureRmContainerName: 'storageacctrangkkkknju'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
