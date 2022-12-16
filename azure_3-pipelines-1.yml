@@ -17,7 +17,7 @@ steps:
 
 - task: TerraformCLI@0
   inputs:
-    command: 'destroy'
+    command: 'init'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
     # commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     backendType: 'azurerm'
@@ -28,3 +28,8 @@ steps:
     backendAzureRmStorageAccountName: 'storageaccmomogh'
     backendAzureRmContainerName: 'storageacctrangkkkknju'
     backendAzureRmKey: 'kubernetes-dev.tfstate'
+- task: TerraformCLI@0
+  inputs:
+    command: 'destroy'
+    environmentServiceName: 'AZURE_28'
+    allowTelemetryCollection: true
